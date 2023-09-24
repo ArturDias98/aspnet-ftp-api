@@ -49,7 +49,8 @@ internal static class MapEndpoints
             [FromServices] IFtpService service,
             CancellationToken token) =>
         {
-            var list = await service.DiscoverAsync(path, token);
+            var decode = HttpUtility.UrlDecode(path);
+            var list = await service.DiscoverAsync(decode, token);
 
             return Results.Json(list);
         }).WithName("List");

@@ -2,7 +2,7 @@
 
 public class ResultModel<T> : ResultBase
 {
-    protected ResultModel() { }
+    public ResultModel() { }
 
     public ResultModel(T result)
     {
