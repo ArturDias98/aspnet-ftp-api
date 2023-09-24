@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpWeb.Api", "FtpWeb.BlazorWasm\FtpWeb.Api.csproj", "{BB0EFAF7-0B61-4058-8545-7C93BF2F50FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FtpWeb.Wasm", "FtpWeb.Wasm\FtpWeb.Wasm.csproj", "{D0423553-FA5C-4F0F-A316-4B90A2F2DFD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpWeb.Wasm", "FtpWeb.Wasm\FtpWeb.Wasm.csproj", "{D0423553-FA5C-4F0F-A316-4B90A2F2DFD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FtpWeb.Shared", "FtpWeb.Shared\FtpWeb.Shared.csproj", "{7154CF13-3CB8-4AAB-BD2E-09CC3C6C7A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpWeb.Shared", "FtpWeb.Shared\FtpWeb.Shared.csproj", "{7154CF13-3CB8-4AAB-BD2E-09CC3C6C7A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FtpWeb.Api", "FtpWeb.Api\FtpWeb.Api.csproj", "{4DC6A4DA-9A8E-4413-8852-4F27968CB307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BB0EFAF7-0B61-4058-8545-7C93BF2F50FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB0EFAF7-0B61-4058-8545-7C93BF2F50FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB0EFAF7-0B61-4058-8545-7C93BF2F50FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB0EFAF7-0B61-4058-8545-7C93BF2F50FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0423553-FA5C-4F0F-A316-4B90A2F2DFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0423553-FA5C-4F0F-A316-4B90A2F2DFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0423553-FA5C-4F0F-A316-4B90A2F2DFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{7154CF13-3CB8-4AAB-BD2E-09CC3C6C7A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7154CF13-3CB8-4AAB-BD2E-09CC3C6C7A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7154CF13-3CB8-4AAB-BD2E-09CC3C6C7A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC6A4DA-9A8E-4413-8852-4F27968CB307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC6A4DA-9A8E-4413-8852-4F27968CB307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC6A4DA-9A8E-4413-8852-4F27968CB307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC6A4DA-9A8E-4413-8852-4F27968CB307}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
