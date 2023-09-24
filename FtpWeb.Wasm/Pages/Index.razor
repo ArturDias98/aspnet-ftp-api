@@ -1,3 +1,16 @@
 ﻿@page "/"
 
 <PageTitle>Index</PageTitle>
+
+<MudPaper Elevation="0">
+    <MudTreeView Items="_treeItems"
+                 ServerData="LoadItems">
+        <ItemTemplate>
+            <MudTreeViewItem Value="@context"
+                             Icon="@context.Icon"
+                             LoadingIconColor="Color.Info"
+                             CanExpand="@context.CanExpand"
+                             Text="@context.Name" />
+        </ItemTemplate>
+    </MudTreeView>
+</MudPaper>
