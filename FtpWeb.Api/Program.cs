@@ -9,7 +9,11 @@ builder.Services.AddApiServices();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
