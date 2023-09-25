@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
 using System.Web;
 
 namespace FtpWeb.Wasm.Pages;
@@ -44,7 +45,7 @@ public partial class Index
         }
         catch (Exception)
         {
-             return Enumerable.Empty<TreeModel>();
+            return Enumerable.Empty<TreeModel>();
         }
     }
 
@@ -65,6 +66,16 @@ public partial class Index
         {
 
         }
+    }
+
+    static string ToUrl(TreeModel node)
+    {
+        var parse = Uri.EscapeDataString(node.FullName);
+        return new StringBuilder()
+            .Append("http://localhost:5184/")
+            .Append("api/v1/download/")
+            .Append(parse)
+            .ToString();
     }
 
     [Inject] HttpClient Client { get; set; } = null!;

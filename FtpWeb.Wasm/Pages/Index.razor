@@ -16,14 +16,29 @@
             </MudButton>
         </ButtonTemplate>
     </MudFileUpload>
+
     <MudTreeView Items="_treeItems"
                  ServerData="LoadItems">
-        <ItemTemplate>
-            <MudTreeViewItem Value="@context"
-                             Icon="@context.Icon"
+        <ItemTemplate Context="item">
+            <MudTreeViewItem Value="@item"
+                             Icon="@item.Icon"
                              LoadingIconColor="Color.Info"
-                             CanExpand="@context.CanExpand"
-                             Text="@context.Name" />
+                             CanExpand="@item.CanExpand">
+                <BodyContent>
+                    <div class="d-flex flex-row align-items-center">
+                        <MudText>@item.Name</MudText>
+                        @if (!item.IsFolder)
+                        {
+                            <MudIconButton Icon="@Icons.Material.Filled.Download" 
+                                           Class="ml-4"
+                                           Size="Size.Small"
+                                           Color="Color.Error"
+                                           Href="@ToUrl(item)"
+                                           Target="_blank"/>
+                        }
+                    </div>
+                </BodyContent>
+            </MudTreeViewItem>
         </ItemTemplate>
     </MudTreeView>
 </MudPaper>

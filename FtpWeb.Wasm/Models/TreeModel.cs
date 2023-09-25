@@ -14,5 +14,7 @@ public class TreeModel : FtpItemModel
     public string Icon => IsFolder
         ? Icons.Material.Filled.Folder
         : Icons.Custom.FileFormats.FileDocument;
-    public bool CanExpand => true;
+    public bool CanExpand => IsFolder;
+
+    public string Url => Uri.EscapeDataString(FullName);
 }
