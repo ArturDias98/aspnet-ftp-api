@@ -25,14 +25,10 @@ internal static class MapEndpoints
             [FromServices] IFtpService service,
             CancellationToken token) =>
         {
-            var filepath = new StringBuilder()
-            .Append(path)
-            .Append('/')
-            .Append(file.FileName)
-            .ToString();
+            var parse = HttpUtility.UrlDecode(path);
 
             var result = await service.UploadFileAsync(
-                filepath,
+                parse,
                 file.OpenReadStream(),
                 token);
 

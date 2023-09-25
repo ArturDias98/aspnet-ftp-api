@@ -3,6 +3,19 @@
 <PageTitle>Index</PageTitle>
 
 <MudPaper Elevation="0">
+    <MudFileUpload T="IBrowserFile"
+                   FilesChanged="OnFileChanged"
+                   Class="mb-4">
+        <ButtonTemplate>
+            <MudButton HtmlTag="label"
+                       Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.CloudUpload"
+                       for="@context">
+                Upload Files
+            </MudButton>
+        </ButtonTemplate>
+    </MudFileUpload>
     <MudTreeView Items="_treeItems"
                  ServerData="LoadItems">
         <ItemTemplate>

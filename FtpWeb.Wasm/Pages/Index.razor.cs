@@ -2,6 +2,8 @@
 using FtpWeb.Shared.Models.Result;
 using FtpWeb.Wasm.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Web;
 
@@ -43,6 +45,25 @@ public partial class Index
         catch (Exception)
         {
              return Enumerable.Empty<TreeModel>();
+        }
+    }
+
+    private async Task OnFileChanged(IBrowserFile file)
+    {
+        try
+        {
+            using var form = new MultipartFormDataContent();
+            using var fileContent = new StreamContent(file.OpenReadStream(30000000));
+            fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
+            form.Add(fileContent, "file", file.Name);
+
+            var parse = Uri.EscapeDataString($"files/{file.Name}");
+            using var response = await Client.PostAsync($"api/v1/{parse}", form);
+            response.EnsureSuccessStatusCode();
+        }
+        catch (Exception ex)
+        {
+
         }
     }
 
