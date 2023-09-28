@@ -11,4 +11,5 @@ public interface IFtpService : IDisposable
     Task<ResultModel<string>> DeleteDirectoryAsync(string path, CancellationToken cancellationToken = default);
     Task<ResultModel<string>> DeleteFileAsync(string path, CancellationToken cancellationToken = default);
     Task<ResultModel<string>> RenameAsync(FtpRenameModel model, CancellationToken cancellationToken = default);
+    Task<Stream> GetStreamAsync(string path, CancellationToken cancellationToken = default);
 }

@@ -1,6 +1,8 @@
 ﻿using FtpWeb.Api.Contracts;
 using FtpWeb.Shared.Models;
+using FtpWeb.Shared.Models.Result;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using System.Text;
 using System.Web;
 
@@ -67,6 +69,28 @@ internal static class MapEndpoints
             }
 
             return Results.Json(result);
+        });
+
+        app.MapGet("api/v1/image/{path}", async (
+            [FromRoute] string path,
+            [FromServices] IFtpService service,
+            CancellationToken token) =>
+        {
+            var parse = HttpUtility.UrlDecode(path);
+            var tryGetContentType = new FileExtensionContentTypeProvider()
+            .TryGetContentType(parse, out var contentType);
+
+            if (!tryGetContentType)
+            {
+                return Results.BadRequest();
+            }
+
+            var result = await service.GetStreamAsync(parse, token);
+
+            if (result.Length == 0)
+                return Results.NotFound();
+
+            return Results.File(result, contentType);
         });
 
         return app;

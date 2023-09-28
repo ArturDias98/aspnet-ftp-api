@@ -60,12 +60,8 @@ internal class FtpService : IFtpService
         try
         {
             await EnsureConnection(cancellationToken);
-
-            await _client.Connect(cancellationToken);
-
-            await _client.SetWorkingDirectory(_options.WorkDir, cancellationToken);
-
-            return new(await _client.OpenRead(path, token: cancellationToken));
+            using var stream = await _client.OpenRead(path, token: cancellationToken);
+            return new(stream);
         }
         catch (Exception ex)
         {
@@ -74,15 +70,25 @@ internal class FtpService : IFtpService
         }
     }
 
+    public async Task<Stream> GetStreamAsync(string path, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            await EnsureConnection(cancellationToken);
+            return await _client.OpenRead(path, token: cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Error on get stream", ex.Message);
+            return Stream.Null;
+        }
+    }
+
     public async Task<ResultModel<string>> UploadFileAsync(string path, Stream stream, CancellationToken cancellationToken = default)
     {
         try
         {
             await EnsureConnection(cancellationToken);
-
-            await _client.Connect(cancellationToken);
-
-            await _client.SetWorkingDirectory(_options.WorkDir, cancellationToken);
 
             var status = await _client.UploadStream(
                 stream,
